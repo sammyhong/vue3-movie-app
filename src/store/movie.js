@@ -32,7 +32,6 @@ export default {
       if (state.loading) {
         return;
       }
-
       commit("updateState", {
         message: "",
         loading: true,
@@ -110,7 +109,7 @@ export default {
 
 // '_' 기호는 현재 페이지에서만 사용한다는 의미
 function _fetchMovie(payload) {
-  const { title, type, year, page } = payload;
+  const { title, type, year, page, id } = payload;
   const OMDB_API_KEY = "7035c60c";
   const url = id
     ? `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}`
