@@ -27,7 +27,6 @@ import MovieItem from '~/components/MovieItem'
 import Loader from '~/components/Loader'
 
 export default {
-    
     components: {
         MovieItem,
         Loader
@@ -43,7 +42,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 
 .container {
   margin-top: 30px;
