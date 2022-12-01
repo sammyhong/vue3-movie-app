@@ -74,6 +74,7 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex';
 import Loader from '~/components/Loader'
 
 export default {
@@ -81,12 +82,10 @@ export default {
     Loader
   },
   computed: {
-    theMovie() {
-      return this.$store.state.movie.theMovie
-    },
-    loading() {
-      return this.$store.state.movie.loading
-    }
+    ...mapState( 'movie', [
+      'loading',
+      'theMovie'
+    ])
   },
   created() {
     console.log(this.$route)
@@ -110,8 +109,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main";
-
 .container {
   padding-top: 40px;
 }
@@ -210,6 +207,34 @@ export default {
       color: $black;
       font-family: "Oswald", sans-serif;
       font-size: 20px;
+    }
+  }
+  @include media-breakpoint-down(xl) {
+    .poster {
+      width: 300px;
+      height: 300px*3/2;
+      margin-right: 40px;
+    }
+  }
+  @include media-breakpoint-down(lg) {
+    display: block;
+    .poster {
+      margin-bottom: 40px;
+    }
+  }
+  @include media-breakpoint-down(md) {
+    .specs {
+      .title {
+        font-size: 50px;
+      }
+      .ratings {
+        .rating-wrap {
+          display: block;
+          .rating {
+            margin-top: 10px;
+          }
+        }
+      }
     }
   }
 }

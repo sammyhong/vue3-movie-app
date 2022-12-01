@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
 import Loader from '~/components/Loader'
 
 export default {
@@ -30,21 +31,14 @@ export default {
     }
   },
   computed: {
-    image() {
-      return this.$store.state.about.image
-    },
-    name() {
-      return this.$store.state.about.name
-    },
-    email() {
-      return this.$store.state.about.email
-    },
-    github() {
-      return this.$store.state.about.github
-    },
-    phone() {
-      return this.$store.state.about.phone
-    }
+    // 첫번째 인자 : 사용할 모듈
+    ...mapState( 'about', [
+      'image',
+      'name',
+      'email',
+      'github',
+      'phone'
+    ])
   },
   mounted() {
     this.init()  
@@ -59,13 +53,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main";
+
 
 .about {
   text-align: center;
   .photo {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     margin: 40px auto 20px;
     padding: 30px;
     border: 10px solid $gray-300;
